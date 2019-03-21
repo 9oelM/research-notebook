@@ -13,7 +13,19 @@ def crawlerMainJob(*params):
 
 def crawler(event, context):
     itemURL = 'https://apis.zigbang.com/v3/items2'
-    itemURLPayload = {'lat_south': 37.44033750792432, 'lat_north': 37.6917904425295, 'lng_west': 126.87271708120215, 'lng_east': 127.08344785550588, 'room': '[01,02,03,04,05]'}
+    itemURLPayload = {}
+    if event['test']:
+        # loads only ~ 50 items
+        itemURLPayload = {
+            'lat_south': 37.3553425382805,
+            'lat_north': 37.411170336344824,
+            'lng_west': 126.76330145291172,
+            'lng_east': 126.88466634965496,
+            'room': '[01,02,03,04,05]'
+        }
+    else:
+        # loads ~30000 items
+        itemURLPayload = {'lat_south': 37.44033750792432, 'lat_north': 37.6917904425295, 'lng_west': 126.87271708120215, 'lng_east': 127.08344785550588, 'room': '[01,02,03,04,05]'}
     
     data = crawlerMainJob(itemURL, itemURLPayload)
     
@@ -24,4 +36,4 @@ def crawler(event, context):
     return response
     
 if __name__ == "__main__":
-    crawler(1,1)
+    crawler({'test': True},1)
