@@ -5,7 +5,7 @@ from util import compose
 
 def crawlerMainJob(*params):
     return compose(
-        getSubInfo,
+        lambda data : getSubInfo(data, 650),
         getIdAndType,
         toJson,
         requests.get,
@@ -22,3 +22,6 @@ def crawler(event, context):
         "body": json.dumps(data)
     }
     return response
+    
+if __name__ == "__main__":
+    crawler(1,1)
