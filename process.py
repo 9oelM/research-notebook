@@ -29,7 +29,7 @@ def getSubInfo(data, step):
     for counter, piece in enumerate(data):
         result = []
         # step max < ~650
-        if ( counter != 0 and counter % step == 0) or ( counter == len(data) ):
+        if ( counter != 0 and counter % step == 0) or ( counter == len(data) -1):
             print('Reached %dth counter' %counter)
             print('Requesting')
             
