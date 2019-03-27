@@ -41,7 +41,7 @@ def getSubInfo(data, step):
             
             for idx, item in enumerate(resp.json()['items']):
                 itemDetail = item['item']
-                info = ['agent_lat', 'agent_lng', 'deposit', 'rent', 'manage_cost', 'floor', 'floor_all', 'building_type', 'near_subways', 'options', 'parking', 'room_type', 'size_m2', 'id', 'is_premium']
+                info = ['local2', 'local3', 'agent_lat', 'agent_lng', 'deposit', 'rent', 'manage_cost', 'floor', 'floor_all', 'building_type', 'near_subways', 'options', 'parking', 'room_type', 'size_m2', 'id', 'is_premium']
                 
                 room = {}
                 for subinfo in info:
