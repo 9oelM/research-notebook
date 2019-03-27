@@ -1,4 +1,4 @@
-# es
+# Scraper
 ## Setup
 0. Make sure you are using `python3.6+` and a decent `pip`
     ```bash
