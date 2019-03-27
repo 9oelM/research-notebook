@@ -1,6 +1,7 @@
 # Scraper
 - Scrapes data on flats in Seoul from [Zigbang](https://www.zigbang.com/)
 - Modified from the master branch to enable local scraping instead of on AWS lambda. 
+- Research note taken on Jupyter notebook
 
 ## Usage
 ```
@@ -35,11 +36,3 @@ python3 handler.py
     ```bash
     npm install 
     ```
-
-## Deploy (for other branches)
-```
-pipenv run pip freeze > requirements.txt && sls deploy
-```
-
-## Must read (warning)
-`requirements.txt` is essential for `serverless-python-requirements` to work. You can delete it, but you must produce it again before you deploy!
