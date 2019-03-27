@@ -9,6 +9,10 @@ def getJson(file):
 def toJson(response):
     return response.json()
 
+def saveJson(file, data):
+    with open(file, 'w') as outfile:
+        json.dump(data, outfile)
+
 def getIdAndType(data):
     processed = []
     print('Total items requested: %d' %(len(data['list_items'])))
@@ -26,8 +30,8 @@ def getSubInfo(data, step):
     # the number of data to be processed usually reaches up to ~30000 
     # divide the requests into each with 500 items
     
+    result = []
     for counter, piece in enumerate(data):
-        result = []
         # step max < ~650
         if ( counter != 0 and counter % step == 0) or ( counter == len(data) -1):
             print('Reached %dth counter' %counter)
@@ -41,7 +45,7 @@ def getSubInfo(data, step):
             
             for idx, item in enumerate(resp.json()['items']):
                 itemDetail = item['item']
-                info = ['agent_lat', 'agent_lng', 'deposit', 'rent', 'manage_cost', 'floor', 'floor_all', 'building_type', 'near_subways', 'options', 'parking', 'room_type', 'size_m2', 'id', 'is_premium']
+                info = ['local2', 'local3', 'agent_lat', 'agent_lng', 'deposit', 'rent', 'manage_cost', 'floor', 'floor_all', 'building_type', 'near_subways', 'options', 'parking', 'room_type', 'size_m2', 'id', 'is_premium']
                 
                 room = {}
                 for subinfo in info:
@@ -55,4 +59,7 @@ def getSubInfo(data, step):
         else:
             detailedItemURLPayload['item_ids'] += '%d,' % piece['id']
             
-    return result
+    return {
+        'length': len(result),
+        'array': result
+    }
