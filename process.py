@@ -30,8 +30,8 @@ def getSubInfo(data, step):
     # the number of data to be processed usually reaches up to ~30000 
     # divide the requests into each with 500 items
     
+    result = []
     for counter, piece in enumerate(data):
-        result = []
         # step max < ~650
         if ( counter != 0 and counter % step == 0) or ( counter == len(data) -1):
             print('Reached %dth counter' %counter)
