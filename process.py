@@ -9,6 +9,10 @@ def getJson(file):
 def toJson(response):
     return response.json()
 
+def saveJson(file, data):
+    with open(file, 'w') as outfile:
+        json.dump(data, outfile)
+
 def getIdAndType(data):
     processed = []
     print('Total items requested: %d' %(len(data['list_items'])))
@@ -55,4 +59,7 @@ def getSubInfo(data, step):
         else:
             detailedItemURLPayload['item_ids'] += '%d,' % piece['id']
             
-    return result
+    return {
+        'length': len(result),
+        'array': result
+    }

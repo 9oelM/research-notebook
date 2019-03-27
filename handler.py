@@ -1,10 +1,11 @@
 import json
 import requests 
-from process import getIdAndType, getSubInfo, toJson
+from process import getIdAndType, getSubInfo, toJson, saveJson
 from util import compose
 
 def crawlerMainJob(*params):
     return compose(
+        lambda data : saveJson('./result.json', data),
         lambda data : getSubInfo(data, 650),
         getIdAndType,
         toJson,
@@ -27,13 +28,7 @@ def crawler(event, context):
         # loads ~30000 items
         itemURLPayload = {'lat_south': 37.44033750792432, 'lat_north': 37.6917904425295, 'lng_west': 126.87271708120215, 'lng_east': 127.08344785550588, 'room': '[01,02,03,04,05]'}
     
-    data = crawlerMainJob(itemURL, itemURLPayload)
-    
-    response = {
-        "statusCode": 200,
-        "body": json.dumps(data)
-    }
-    return response
+    crawlerMainJob(itemURL, itemURLPayload)
     
 if __name__ == "__main__":
-    crawler({'test': True},1)
+    crawler({'test': False},1)
