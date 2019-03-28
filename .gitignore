@@ -21,3 +21,5 @@ node_modules
 # Serverless directories
 .serverless
 .~c9*
+.c9
+.ipynb_checkpoints
