@@ -1,38 +1,21 @@
-# Scraper
-- Scrapes data on flats in Seoul from [Zigbang](https://www.zigbang.com/)
-- Modified from the master branch to enable local scraping instead of on AWS lambda. 
-- Research note taken on Jupyter notebook
+# Research notebook
+- Based on the data from [SeoulHouse/Scraper](https://github.com/seoulhouse/scraper)
+- Research on the data on flats in Seoul
 
-## Usage
+## Launch notebook
+on cloud
 ```
-python3 handler.py
+jupyter notebook --ip=0.0.0.0 --port=8080 --no-browser
 ```
 
-## Setup
-0. Make sure you are using `python3.6+` and a decent `pip`
-    ```bash
-    python3 --version
-    pip install --upgrade pip
-    ```
+locally
+```
+jupyter notebook
+```
 
-1. Install `pipenv` and install packages
-    ```bash
-    pip install pipenv
-    pipenv install 
-    ```
-
-2. Install node lts
-    ```bash
-    nvm install stable
-    ```
-
-3. Install `serverless` globally and install python requirements plugin
-    ```bash
-    npm install -g serverless
-    serverless sls plugin install -n serverless-python-requirements
-    ```
-
-4. Install npm packages
-    ```bash
-    npm install 
-    ```
+## Get the working URL of the notebook (when running on Cloud9...)
+- See [this issue](https://community.c9.io/t/cant-preview-in-aws-c9/23340)
+- Go to your EC2 console
+- Find the 32 letters long string comprised of random numbers and alphabets under 'Security Group' in 'Details'
+- Go browse https://[32 letters].vfs.cloud9.[your region].amazonaws.com/
+- `your region` is something like `us-east-1`
